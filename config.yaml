@@ -1,13 +1,16 @@
 ---
-baseURL: "http://localhost"
+baseURL: "https://pg2es.github.io" # temporary
 title: "SearchReplica"
+description: >
+  Search replica would sync your postgres data to elasticsearch in a background. 
 theme: "hugo-geekdoc"
+publishDir: "docs"
 
 # Required to get well formatted code blocks
 pygmentsUseClasses: true
 pygmentsCodeFences: true
 disablePathToLower: true
-enableGitInfo: true
+enableGitInfo: false
 
 # Required if you want to render robots.txt template
 enableRobotsTXT: true
@@ -21,8 +24,8 @@ markup:
     startLevel: 1
     endLevel: 9
 
-taxonomies:
-  tag: tags
+# taxonomies:
+  # tag: tags
 
 params:
   # (Optional, default 6) Set how many table of contents levels to be showed on page.
@@ -31,16 +34,17 @@ params:
   geekdocToC: 3
 
   # (Optional, default static/brand.svg) Set the path to a logo for the Geekdoc
+  # TODO: make logo
   # relative to your 'static/' folder.
   # geekdocLogo: logo.png
 
   # (Optional, default false) Render menu from data file in 'data/menu/main.yaml'.
   # See also https://geekdocs.de/usage/menus/#bundle-menu.
-  geekdocMenuBundle: true
+  # geekdocMenuBundle: true
 
   # (Optional, default false) Collapse all menu entries, can not be overwritten
   # per page if enabled. Can be enabled per page via 'geekdocCollapseSection'.
-  geekdocCollapseAllSections: true
+  geekdocCollapseAllSections: false
 
   # (Optional, default true) Show page navigation links at the bottom of each
   # docs page (bundle menu only).
@@ -51,10 +55,10 @@ params:
   geekdocBreadcrumb: false
 
   # (Optional, default none) Set source repository location. Used for 'Edit page' links. You can also specify this parameter per page in front matter.
-  geekdocRepo: "https://github.com/pg2es/website"
+  geekdocRepo: "https://github.com/pg2es/pg2es.github.io"
 
   # (Optional, default none) Enable 'Edit page' links. Requires 'GeekdocRepo' param and the path must point to the parent directory of the 'content' folder. You can also specify this parameter per page in front matter.
-  geekdocEditPath: edit/main/exampleSite
+  geekdocEditPath: "edit/master/"
 
   # (Optional, default true) Enables search function with flexsearch. Index is built on the fly and might slow down your website.
   geekdocSearch: false
@@ -65,8 +69,8 @@ params:
   geekdocSearchShowParent: true
 
   # (Optional, default none) add page to the site footer. It can be either a remote url or a local file path relative to your content directory.
-  geekdocLegalNotice: "/legal"
-  geekdocPrivacyPolicy: "/privacy"
+  # geekdocLegalNotice: "/legal"
+  # geekdocPrivacyPolicy: "/privacy"
 
   geekdocAnchor: true # Add an anchor link to headlines.
   geekdocAnchorCopy: true # Copy anchor url to clipboard on click.
@@ -89,6 +93,7 @@ params:
   geekdocFileTreeSortBy: "title"
 
   # Adds a "Content licensed under <license>" line to the footer.
-  geekdocContentLicense:
-    name: MIT
-    link: https://raw.githubusercontent.com/pg2es/search-replica/master/LICENSE
+  # geekdocContentLicense:
+    # name: MIT
+    # link: https://raw.githubusercontent.com/pg2es/search-replica/master/LICENSE
+

@@ -1,0 +1,17 @@
+---
+more:
+  # - name: News
+    # ref: "/#"
+    # icon: "gdoc_notification"
+  # - name: Releases
+    # ref: "https://github.com/pg2es/search-replica/releases"
+    # external: true
+    # icon: "gdoc_download"
+  - name: "View Source"
+    ref: "https://github.com/pg2es/search-replica/"
+    external: true
+    icon: "gdoc_github"
+  - name: "Container Images"
+    ref: "https://hub.docker.com/r/pg2es/search-replica/tags"
+    external: true
+    icon: "docker"

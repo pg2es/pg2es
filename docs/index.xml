@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Search Replica on SearchReplica</title>
+    <link>https://pg2es.github.io/</link>
+    <description>Recent content in Search Replica on SearchReplica</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://pg2es.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basic Setup</title>
+      <link>https://pg2es.github.io/getting-started/basic-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pg2es.github.io/getting-started/basic-setup/</guid>
+      <description>We&amp;rsquo;ll start simple, with one table about blog posts that we need to be indexed as is.
+(optional) for sandbox, do cleanup:
+DROP PUBLICATION IF EXISTS &amp;#34;search&amp;#34;; curl -XDELETE &amp;#39;http://127.0.0.1:9200/postgres&amp;#39; create table(s):
+CREATE TABLE public.posts ( id bigserial NOT NULL, title text NOT NULL DEFAULT &amp;#39;&amp;#39;, content text NOT NULL DEFAULT &amp;#39;&amp;#39;, PRIMARY KEY (id) ); configure table: (wouldn&amp;rsquo;t be required in future)
+COMMENT ON TABLE public.posts IS &amp;#39;index:&amp;#34;,all&amp;#34;&amp;#39;; -- index all fields by default expose the table in a publication</description>
+    </item>
+    
+    <item>
+      <title>Conftags config and customization</title>
+      <link>https://pg2es.github.io/getting-started/conftags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pg2es.github.io/getting-started/conftags/</guid>
+      <description>To simplify workload, SearchReplica relies on rarelly used sql COMMENTs. Defining them on table or field allows skip, rename fields, inline one table into another document, etc.
+PostgreSQL COMMENT is a Text field which can store values of any length (up to 1GB)
+How to You define comments with basic ommands
+COMMENT ON TABLE your.tablename IS &amp;#39;...conftag values here...&amp;#39;; COMMENT ON COLUMN your.tablename.columnname IS &amp;#39;...conftag values here...&amp;#39;; Tag Syntax Syntax is slightly changed struct tags from Golang, if you familiar.</description>
+    </item>
+    
+    <item>
+      <title>Consistency</title>
+      <link>https://pg2es.github.io/how-it-works/consistency/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pg2es.github.io/how-it-works/consistency/</guid>
+      <description>Postgres: Write Ahead Log By design, data in Postgres in always consistent. All the transactions are applied in sequentual matter, into single transaction log. To be more precise Write Ahead Log. No matter how many times you replay WAL file, result would be the same.
+Postgres: Replication Slot Collection of offsets, that preserves Postgres from deleting WAL files. Allows to replay changes from last commited position
+Changes are applied sequantually Documents in batch query garanteed to be applied in order.</description>
+    </item>
+    
+    <item>
+      <title>Flexibility</title>
+      <link>https://pg2es.github.io/how-it-works/flexibility/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pg2es.github.io/how-it-works/flexibility/</guid>
+      <description>It&amp;rsquo;s usable, but do not expect to much The tool is quite straightforward, designed mostly for 1:1 match between table and document. However, there are few tricks up it&amp;rsquo;s sleeve.
+Features:
+Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join via join field. (static and polymorphic) Configurable document _id (planned) template fields (planned) multi-column PKs Feel free to request additional features.</description>
+    </item>
+    
+    <item>
+      <title>Why is it fast</title>
+      <link>https://pg2es.github.io/how-it-works/speed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pg2es.github.io/how-it-works/speed/</guid>
+      <description>Low level binary API Search replica uses jackc&amp;rsquo;s pgconn &amp;amp; pgtype libraries, which can decode postgres data quite efficiently. Most types in pgtype, implement JSON marshalling, making this step even more efficient.
+Uses binary format for initial reindexing and streaming (PG 14+)
+Streaming Both COPY TO and Streamed messaged are processed one by one, reusing memory. Keeping memory requirements low.
+Bulk queries All updates are combined into bulk buffer, which is flushed by predefined intervals.</description>
+    </item>
+    
+  </channel>
+</rss>

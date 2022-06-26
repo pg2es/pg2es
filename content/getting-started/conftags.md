@@ -1,5 +1,9 @@
 ---
-title: "Conftags config and customization"
+title: "Configuration"
+description: >
+  Conftags config and customization usigng PostgreSQL COMMENT.
+weight: 2
+
 ---
 
 To simplify workload, SearchReplica relies on rarelly used sql `COMMENT`s.

@@ -12,12 +12,9 @@
 <meta name="generator" content="Hugo 0.101.0" />
 
 
-  <meta name="description" content="To simplify workload, SearchReplica relies on rarelly used sql COMMENTs. Defining them on table or field allows skip, rename fields, inline one table into another document, etc.
-PostgreSQL COMMENT is a Text field which can store values of any length (up to 1GB)
-How to You define comments with basic ommands
-COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT ON COLUMN your.tablename.columnname IS &#39;...conftag values here...&#39;; Tag Syntax Syntax is slightly changed struct tags from Golang, if you familiar." />
+  <meta name="description" content="Conftags config and customization usigng PostgreSQL COMMENT." />
 
-    <title>Conftags config and customization | SearchReplica</title>
+    <title>Configuration | SearchReplica</title>
 
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 <link
@@ -38,13 +35,10 @@ COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT 
     
   <meta
     property="og:title"
-    content="Conftags config and customization"
+    content="Configuration"
   />
   <meta property="og:site_name" content="SearchReplica" />
-  <meta property="og:description" content="To simplify workload, SearchReplica relies on rarelly used sql COMMENTs. Defining them on table or field allows skip, rename fields, inline one table into another document, etc.
-PostgreSQL COMMENT is a Text field which can store values of any length (up to 1GB)
-How to You define comments with basic ommands
-COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT ON COLUMN your.tablename.columnname IS &#39;...conftag values here...&#39;; Tag Syntax Syntax is slightly changed struct tags from Golang, if you familiar." />
+  <meta property="og:description" content="Conftags config and customization usigng PostgreSQL COMMENT." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://pg2es.github.io/getting-started/conftags/" />
 
@@ -52,11 +46,8 @@ COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT 
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Conftags config and customization" />
-  <meta name="twitter:description" content="To simplify workload, SearchReplica relies on rarelly used sql COMMENTs. Defining them on table or field allows skip, rename fields, inline one table into another document, etc.
-PostgreSQL COMMENT is a Text field which can store values of any length (up to 1GB)
-How to You define comments with basic ommands
-COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT ON COLUMN your.tablename.columnname IS &#39;...conftag values here...&#39;; Tag Syntax Syntax is slightly changed struct tags from Golang, if you familiar." />
+<meta name="twitter:title" content="Configuration" />
+  <meta name="twitter:description" content="Conftags config and customization usigng PostgreSQL COMMENT." />
 
 
   <script type="application/ld+json">
@@ -64,10 +55,10 @@ COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT 
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Getting Started",
-      "name": "Conftags config and customization",
+      "name": "Configuration",
       "url" : "https://pg2es.github.io/getting-started/conftags/",
-      "headline": "Conftags config and customization",
-      "description": "To simplify workload, SearchReplica relies on rarelly used sql COMMENTs. Defining them on table or field allows skip, rename fields, inline one table into another document, etc.\nPostgreSQL COMMENT is a Text field which can store values of any length (up to 1GB)\nHow to You define comments with basic ommands\nCOMMENT ON TABLE your.tablename IS \u0027...conftag values here...\u0027; COMMENT ON COLUMN your.tablename.columnname IS \u0027...conftag values here...\u0027; Tag Syntax Syntax is slightly changed struct tags from Golang, if you familiar.",
+      "headline": "Configuration",
+      "description": "Conftags config and customization usigng PostgreSQL COMMENT.",
       "wordCount" : "441",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
@@ -540,6 +531,14 @@ COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT 
           </li>
         
       
+    
+      
+
+      
+        
+      
+
+      
         
           
           
@@ -565,7 +564,51 @@ COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT 
                     href="/getting-started/conftags/"
                     class="gdoc-nav__entry is-active"
                   >
-                    Conftags config and customization
+                    Configuration
+                  </a>
+                </span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/getting-started/inline/"
+                    class="gdoc-nav__entry"
+                  >
+                    Inlining
                   </a>
                 </span>
               
@@ -754,7 +797,7 @@ COMMENT ON TABLE your.tablename IS &#39;...conftag values here...&#39;; COMMENT 
   <article
     class="gdoc-markdown gdoc-markdown__align--left"
   >
-    <h1>Conftags config and customization</h1>
+    <h1>Configuration</h1>
     <p>To simplify workload, SearchReplica relies on rarelly used sql <code>COMMENT</code>s.
 Defining them on table or field allows skip, rename fields, inline one table into another document, etc.</p>
 <p>PostgreSQL <code>COMMENT</code> is a <code>Text</code> field which can store values of any length (up to 1GB)</p>

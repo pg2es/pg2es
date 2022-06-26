@@ -12,12 +12,9 @@
 <meta name="generator" content="Hugo 0.101.0" />
 
 
-  <meta name="description" content="Low level binary API Search replica uses jackc&rsquo;s pgconn &amp; pgtype libraries, which can decode postgres data quite efficiently. Most types in pgtype, implement JSON marshalling, making this step even more efficient.
-Uses binary format for initial reindexing and streaming (PG 14&#43;)
-Streaming Both COPY TO and Streamed messaged are processed one by one, reusing memory. Keeping memory requirements low.
-Bulk queries All updates are combined into bulk buffer, which is flushed by predefined intervals." />
+  <meta name="description" content="Inlining one table into another. Hacky yet working way of denormalization via Elasticsearch scripted updates." />
 
-    <title>Why is it fast | SearchReplica</title>
+    <title>Inlining | SearchReplica</title>
 
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 <link
@@ -38,42 +35,36 @@ Bulk queries All updates are combined into bulk buffer, which is flushed by pred
     
   <meta
     property="og:title"
-    content="Why is it fast"
+    content="Inlining"
   />
   <meta property="og:site_name" content="SearchReplica" />
-  <meta property="og:description" content="Low level binary API Search replica uses jackc’s pgconn &amp; pgtype libraries, which can decode postgres data quite efficiently. Most types in pgtype, implement JSON marshalling, making this step even more efficient.
-Uses binary format for initial reindexing and streaming (PG 14&#43;)
-Streaming Both COPY TO and Streamed messaged are processed one by one, reusing memory. Keeping memory requirements low.
-Bulk queries All updates are combined into bulk buffer, which is flushed by predefined intervals." />
+  <meta property="og:description" content="Inlining one table into another. Hacky yet working way of denormalization via Elasticsearch scripted updates." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://pg2es.github.io/how-it-works/speed/" />
+<meta property="og:url" content="https://pg2es.github.io/getting-started/inline/" />
 
-<meta property="article:section" content="How It Works" />
+<meta property="article:section" content="Getting Started" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Why is it fast" />
-  <meta name="twitter:description" content="Low level binary API Search replica uses jackc’s pgconn &amp; pgtype libraries, which can decode postgres data quite efficiently. Most types in pgtype, implement JSON marshalling, making this step even more efficient.
-Uses binary format for initial reindexing and streaming (PG 14&#43;)
-Streaming Both COPY TO and Streamed messaged are processed one by one, reusing memory. Keeping memory requirements low.
-Bulk queries All updates are combined into bulk buffer, which is flushed by predefined intervals." />
+<meta name="twitter:title" content="Inlining" />
+  <meta name="twitter:description" content="Inlining one table into another. Hacky yet working way of denormalization via Elasticsearch scripted updates." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "How It Works",
-      "name": "Why is it fast",
-      "url" : "https://pg2es.github.io/how-it-works/speed/",
-      "headline": "Why is it fast",
-      "description": "Low level binary API Search replica uses jackc’s pgconn \u0026 pgtype libraries, which can decode postgres data quite efficiently. Most types in pgtype, implement JSON marshalling, making this step even more efficient.\nUses binary format for initial reindexing and streaming (PG 14\u002b)\nStreaming Both COPY TO and Streamed messaged are processed one by one, reusing memory. Keeping memory requirements low.\nBulk queries All updates are combined into bulk buffer, which is flushed by predefined intervals.",
-      "wordCount" : "141",
+      "articleSection": "Getting Started",
+      "name": "Inlining",
+      "url" : "https://pg2es.github.io/getting-started/inline/",
+      "headline": "Inlining",
+      "description": "Inlining one table into another. Hacky yet working way of denormalization via Elasticsearch scripted updates.",
+      "wordCount" : "278",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://pg2es.github.io/how-it-works/speed/"
+          "@id": "https://pg2es.github.io/getting-started/inline/"
       },
       "copyrightHolder" : "SearchReplica",
       "copyrightYear" : "0001",
@@ -155,7 +146,7 @@ Bulk queries All updates are combined into bulk buffer, which is flushed by pred
   href="/custom.css"
   media="all"
 />
-  <link href="https://pg2es.github.io/how-it-works/speed/" rel="canonical" type="text/html" />
+  <link href="https://pg2es.github.io/getting-started/inline/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -429,7 +420,7 @@ Bulk queries All updates are combined into bulk buffer, which is flushed by pred
                 <span class="flex">
                   <a
                     href="/how-it-works/speed/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     Why is it fast
                   </a>
@@ -615,7 +606,7 @@ Bulk queries All updates are combined into bulk buffer, which is flushed by pred
                 <span class="flex">
                   <a
                     href="/getting-started/inline/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     Inlining
                   </a>
@@ -792,7 +783,7 @@ Bulk queries All updates are combined into bulk buffer, which is flushed by pred
       <span class="editpage">
         <svg class="gdoc-icon gdoc_code"><use xlink:href="#gdoc_code"></use></svg>
         <a
-          href="https://github.com/pg2es/pg2es.github.io/edit/master/content/how-it-works/speed.md"
+          href="https://github.com/pg2es/pg2es.github.io/edit/master/content/getting-started/inline.md"
         >
           Edit page
         </a>
@@ -806,68 +797,123 @@ Bulk queries All updates are combined into bulk buffer, which is flushed by pred
   <article
     class="gdoc-markdown gdoc-markdown__align--left"
   >
-    <h1>Why is it fast</h1>
-    <div class="gdoc-page__anchorwrap">
-    <h4 id="low-level-binary-api">
-        Low level binary API
-        <a data-clipboard-text="https://pg2es.github.io/how-it-works/speed/#low-level-binary-api" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Low level binary API" aria-label="Anchor to: Low level binary API" href="#low-level-binary-api">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h4>
-</div>
-<p>Search replica uses jackc&rsquo;s <a
-  class="gdoc-markdown__link"
-  href="https://github.com/jackc/pgconn"
-  
->pgconn</a> &amp; <a
-  class="gdoc-markdown__link"
-  href="https://github.com/jackc/pgtype"
-  
->pgtype</a> libraries, which can decode postgres data quite efficiently. Most types in pgtype, implement JSON marshalling, making this step even more efficient.</p>
-<p>Uses binary format for initial reindexing and streaming (PG 14+)</p>
-<div class="gdoc-page__anchorwrap">
-    <h4 id="streaming">
-        Streaming
-        <a data-clipboard-text="https://pg2es.github.io/how-it-works/speed/#streaming" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Streaming" aria-label="Anchor to: Streaming" href="#streaming">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h4>
-</div>
-<p>Both <code>COPY TO</code> and Streamed messaged are processed one by one, reusing memory. Keeping memory requirements low.</p>
-<div class="gdoc-page__anchorwrap">
-    <h4 id="bulk-queries">
-        Bulk queries
-        <a data-clipboard-text="https://pg2es.github.io/how-it-works/speed/#bulk-queries" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Bulk queries" aria-label="Anchor to: Bulk queries" href="#bulk-queries">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h4>
-</div>
-<p>All updates are combined into bulk buffer, which is flushed by predefined intervals.<br>
-No updates - no requests.</p>
-<p>In case, if SearchReplica was in idle state, and message arrives, it would be forwarded immediately.</p>
-<div class="gdoc-page__anchorwrap">
-    <h4 id="simple-flow">
-        Simple flow
-        <a data-clipboard-text="https://pg2es.github.io/how-it-works/speed/#simple-flow" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Simple flow" aria-label="Anchor to: Simple flow" href="#simple-flow">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h4>
-</div>
-<ul>
-<li>No additional DB requests</li>
-<li>No dependencies, queues, locks, network delay.</li>
-</ul>
-<p>Just fetch =&gt; decode =&gt; encode =&gt; push the data.</p>
-<div class="gdoc-page__anchorwrap">
-    <h4 id="painless-scripting">
-        Painless Scripting
-        <a data-clipboard-text="https://pg2es.github.io/how-it-works/speed/#painless-scripting" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Painless Scripting" aria-label="Anchor to: Painless Scripting" href="#painless-scripting">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h4>
-</div>
-<p>Complex features, like inlining, use scripted update. It&rsquo;s relatively heavy operation, but way cheaper than alternatives and does not distrupt streaming.</p>
+    <h1>Inlining</h1>
+    <p>How to denormalize related data, without additional query? Well, we can push normilized data to search and ask it to figure things out.
+This is done using scripted update of parent document. Does not require any effort from Postgres, while increasing a load on Elasticsearch.</p>
 
+
+
+
+
+<blockquote class="gdoc-hint important">
+  <div class="gdoc-hint__title flex align-center"><i class="fa important" title="Important"></i></div>
+  <div class="gdoc-hint__text"><p><strong>N:M relations are not supported</strong></p>
+<p>And 1:1 do not make any sense in this context. Open issue if you need it.</p>
+</div>
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h3 id="how-to">
+        How to
+        <a data-clipboard-text="https://pg2es.github.io/getting-started/inline/#how-to" class="gdoc-page__anchor clip flex align-center" title="Anchor to: How to" aria-label="Anchor to: How to" href="#how-to">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>In order to put one table as list of objects into another doc, you need to have <code>parent key</code>, which is usualy foreign key.
+Imagine we have structire like thise.</p>
+<p>So, having two tables <code>users</code> and <code>comments</code> with <code>1-N</code> relationship, like</p>
+<div class="gdoc-columns flex flex-wrap flex-mobile-column">
+  
+    <div class="gdoc-columns__content gdoc-markdown--nested flex-even">
+      <div class="table-wrap"> <table>
+<thead>
+<tr>
+<th>Users</th>
+<th><code>index:&quot;,all&quot; inline:&quot;user_comments,comments&quot;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id (pk)</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+</tr>
+<tr>
+<td>phone</td>
+<td><code>index:&quot;-&quot;</code></td>
+</tr>
+</tbody>
+</table> </div>
+
+    </div>
+  
+    <div class="gdoc-columns__content gdoc-markdown--nested flex-even">
+      <div class="table-wrap"> <table>
+<thead>
+<tr>
+<th>Comments</th>
+<th><code>index:&quot;-&quot;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id (pk)</td>
+<td><code>inline:&quot;user_comments&quot;</code></td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><code>inline:&quot;user_comments,parent&quot;</code></td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>inline:&quot;user_comments,content&quot;</code></td>
+</tr>
+<tr>
+<td>date</td>
+<td></td>
+</tr>
+</tbody>
+</table> </div>
+
+    </div>
+  
+</div>
+
+<p>here:</p>
+<ul>
+<li><code>index:&quot;,all&quot;</code> comment on Users table means index all fields, with <code>documentType={tablename}</code></li>
+<li><code>inline:&quot;user_comments,comments&quot;</code> on Users table would inline <code>user_comments</code> objects into <code>comments</code> field.</li>
+<li><code>index:&quot;-&quot;</code> on a Users.phone would not index this field, regardless <code>index:&quot;,all&quot;</code> on a table.</li>
+<li><code>index:&quot;-&quot;</code> on Comments table, would not index this table entierly.</li>
+<li><code>inline:&quot;user_comments&quot;</code> on Comments field id would include this field in <code>user_comments</code> inline, preserving field name. And since this column is PK, it would also be used as PK for inline.</li>
+<li><code>inline:&quot;user_comments,parent&quot;</code> on <code>user_id</code> would specify PK of parrent document. So we can append comment into User.comments.</li>
+<li><code>inline:&quot;user_comments,content&quot;</code> on <code>text</code> field id would include this field in <code>user_comments</code> inline under new <code>content</code> name.</li>
+</ul>
+<p>and this would produce documents like</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;_source&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;docType&#34;</span><span class="p">:</span> <span class="s2">&#34;users&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="mi">1631208</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Rick Sanchez&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;rick@sanches.co&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;comments&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="mi">25285149</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;Lorem Ipsum ...&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="mi">1631208</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="mi">25285753</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;... dolore eu fugiat nulla pariatur...&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="mi">1631208</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
   </article>
 
 

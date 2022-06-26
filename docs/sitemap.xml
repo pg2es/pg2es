@@ -2,15 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://pg2es.github.io/getting-started/basic-setup/</loc>
+  </url><url>
     <loc>https://pg2es.github.io/how-it-works/</loc>
+  </url><url>
+    <loc>https://pg2es.github.io/getting-started/conftags/</loc>
   </url><url>
     <loc>https://pg2es.github.io/getting-started/</loc>
   </url><url>
-    <loc>https://pg2es.github.io/getting-started/basic-setup/</loc>
+    <loc>https://pg2es.github.io/getting-started/inline/</loc>
   </url><url>
     <loc>https://pg2es.github.io/categories/</loc>
-  </url><url>
-    <loc>https://pg2es.github.io/getting-started/conftags/</loc>
   </url><url>
     <loc>https://pg2es.github.io/how-it-works/consistency/</loc>
   </url><url>

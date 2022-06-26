@@ -1,5 +1,7 @@
 ---
 title: "Basic Setup"
+weight: 1
+
 ---
 
 We'll start simple, with one table about blog posts that we need to be indexed as is.

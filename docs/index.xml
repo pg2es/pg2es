@@ -19,7 +19,7 @@ COMMENT ON TABLE public.posts IS &amp;#39;index:&amp;#34;,all&amp;#34;&amp;#39;;
     </item>
     
     <item>
-      <title>Conftags config and customization</title>
+      <title>Configuration</title>
       <link>https://pg2es.github.io/getting-started/conftags/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -28,6 +28,18 @@ COMMENT ON TABLE public.posts IS &amp;#39;index:&amp;#34;,all&amp;#34;&amp;#39;;
 PostgreSQL COMMENT is a Text field which can store values of any length (up to 1GB)
 How to You define comments with basic ommands
 COMMENT ON TABLE your.tablename IS &amp;#39;...conftag values here...&amp;#39;; COMMENT ON COLUMN your.tablename.columnname IS &amp;#39;...conftag values here...&amp;#39;; Tag Syntax Syntax is slightly changed struct tags from Golang, if you familiar.</description>
+    </item>
+    
+    <item>
+      <title>Inlining</title>
+      <link>https://pg2es.github.io/getting-started/inline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pg2es.github.io/getting-started/inline/</guid>
+      <description>How to denormalize related data, without additional query? Well, we can push normilized data to search and ask it to figure things out. This is done using scripted update of parent document. Does not require any effort from Postgres, while increasing a load on Elasticsearch.
+N:M relations are not supported
+And 1:1 do not make any sense in this context. Open issue if you need it.
+How to In order to put one table as list of objects into another doc, you need to have parent key, which is usualy foreign key.</description>
     </item>
     
     <item>

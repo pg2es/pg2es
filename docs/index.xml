@@ -43,6 +43,19 @@ How to In order to put one table as list of objects into another doc, you need t
     </item>
     
     <item>
+      <title>Replica Identity</title>
+      <link>https://pg2es.github.io/getting-started/replica-identity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pg2es.github.io/getting-started/replica-identity/</guid>
+      <description>TL;DR: You need to specify which old values are required.
+You may receive warning, that some field is not in WAL and search replica works in upsert only mode.
+This is because old values for PK or Routing field is not available in updates stream.
+If you define Routing field or use PK which is not Postgres PRIMARY KEY, you may need to configure it.
+-- E.G: ALTER TABLE mytable REPLICA IDENTITY FULL; According to docs there four modes:</description>
+    </item>
+    
+    <item>
       <title>Consistency</title>
       <link>https://pg2es.github.io/how-it-works/consistency/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -12,11 +12,9 @@
 <meta name="generator" content="Hugo 0.101.0" />
 
 
-  <meta name="description" content="It&rsquo;s usable, but do not expect to much The tool is quite straightforward, designed mostly for 1:1 match between table and document. However, there are few tricks up it&rsquo;s sleeve.
-Features:
-Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join via join field. (static and polymorphic) Configurable document _id (planned) template fields (planned) multi-column PKs Feel free to request additional features." />
+  <meta name="description" content="Configuration of PostgreSQL replica identity, for update and delete operations." />
 
-    <title>Flexibility | SearchReplica</title>
+    <title>Replica Identity | SearchReplica</title>
 
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 <link
@@ -37,40 +35,36 @@ Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join v
     
   <meta
     property="og:title"
-    content="Flexibility"
+    content="Replica Identity"
   />
   <meta property="og:site_name" content="SearchReplica" />
-  <meta property="og:description" content="It’s usable, but do not expect to much The tool is quite straightforward, designed mostly for 1:1 match between table and document. However, there are few tricks up it’s sleeve.
-Features:
-Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join via join field. (static and polymorphic) Configurable document _id (planned) template fields (planned) multi-column PKs Feel free to request additional features." />
+  <meta property="og:description" content="Configuration of PostgreSQL replica identity, for update and delete operations." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://pg2es.github.io/how-it-works/flexibility/" />
+<meta property="og:url" content="https://pg2es.github.io/getting-started/replica-identity/" />
 
-<meta property="article:section" content="How It Works" />
+<meta property="article:section" content="Getting Started" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Flexibility" />
-  <meta name="twitter:description" content="It’s usable, but do not expect to much The tool is quite straightforward, designed mostly for 1:1 match between table and document. However, there are few tricks up it’s sleeve.
-Features:
-Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join via join field. (static and polymorphic) Configurable document _id (planned) template fields (planned) multi-column PKs Feel free to request additional features." />
+<meta name="twitter:title" content="Replica Identity" />
+  <meta name="twitter:description" content="Configuration of PostgreSQL replica identity, for update and delete operations." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "How It Works",
-      "name": "Flexibility",
-      "url" : "https://pg2es.github.io/how-it-works/flexibility/",
-      "headline": "Flexibility",
-      "description": "It’s usable, but do not expect to much The tool is quite straightforward, designed mostly for 1:1 match between table and document. However, there are few tricks up it’s sleeve.\nFeatures:\nField renaming Field ignoring Table inlining (scripted 1:N) Table routing Join via join field. (static and polymorphic) Configurable document _id (planned) template fields (planned) multi-column PKs Feel free to request additional features.",
-      "wordCount" : "63",
+      "articleSection": "Getting Started",
+      "name": "Replica Identity",
+      "url" : "https://pg2es.github.io/getting-started/replica-identity/",
+      "headline": "Replica Identity",
+      "description": "Configuration of PostgreSQL replica identity, for update and delete operations.",
+      "wordCount" : "194",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://pg2es.github.io/how-it-works/flexibility/"
+          "@id": "https://pg2es.github.io/getting-started/replica-identity/"
       },
       "copyrightHolder" : "SearchReplica",
       "copyrightYear" : "0001",
@@ -152,7 +146,7 @@ Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join v
   href="/custom.css"
   media="all"
 />
-  <link href="https://pg2es.github.io/how-it-works/flexibility/" rel="canonical" type="text/html" />
+  <link href="https://pg2es.github.io/getting-started/replica-identity/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -390,7 +384,7 @@ Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join v
                 <span class="flex">
                   <a
                     href="/how-it-works/flexibility/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     Flexibility
                   </a>
@@ -656,7 +650,7 @@ Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join v
                 <span class="flex">
                   <a
                     href="/getting-started/replica-identity/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     Replica Identity
                   </a>
@@ -833,7 +827,7 @@ Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join v
       <span class="editpage">
         <svg class="gdoc-icon gdoc_code"><use xlink:href="#gdoc_code"></use></svg>
         <a
-          href="https://github.com/pg2es/pg2es.github.io/edit/master/content/how-it-works/flexibility.md"
+          href="https://github.com/pg2es/pg2es.github.io/edit/master/content/getting-started/replica-identity.md"
         >
           Edit page
         </a>
@@ -847,30 +841,44 @@ Field renaming Field ignoring Table inlining (scripted 1:N) Table routing Join v
   <article
     class="gdoc-markdown gdoc-markdown__align--left"
   >
-    <h1>Flexibility</h1>
-    <div class="gdoc-page__anchorwrap">
-    <h4 id="its-usable-but-do-not-expect-to-much">
-        It&rsquo;s usable, but do not expect to much
-        <a data-clipboard-text="https://pg2es.github.io/how-it-works/flexibility/#its-usable-but-do-not-expect-to-much" class="gdoc-page__anchor clip flex align-center" title="Anchor to: It&rsquo;s usable, but do not expect to much" aria-label="Anchor to: It&rsquo;s usable, but do not expect to much" href="#its-usable-but-do-not-expect-to-much">
+    <h1>Replica Identity</h1>
+    <p>TL;DR: You need to specify which <strong>old values</strong> are required.</p>
+<p>You may receive warning, that some field is not in WAL and search replica works in upsert only mode.<br>
+This is because old values for <code>PK</code> or <code>Routing</code> field is not available in updates stream.</p>
+<p>If you define <code>Routing</code> field or use <code>PK</code> which is not Postgres <code>PRIMARY KEY</code>, you may need to configure it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- E.G:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">mytable</span><span class="w"> </span><span class="n">REPLICA</span><span class="w"> </span><span class="k">IDENTITY</span><span class="w"> </span><span class="k">FULL</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>According to <a
+  class="gdoc-markdown__link"
+  href="https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-REPLICA-IDENTITY"
+  
+>docs</a> there four modes:</p>
+<ul>
+<li><code>DEFAULT</code>  Records the old values of the columns of the primary key, if any.</li>
+<li><code>USING INDEX index_name</code>  Records the old values of the columns covered by the named uniq index</li>
+<li><code>FULL</code>  Records the old values of all columns in the row.</li>
+<li><code>NOTHING</code>  Records no information about the old row.</li>
+</ul>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="using-index">
+        Using index
+        <a data-clipboard-text="https://pg2es.github.io/getting-started/replica-identity/#using-index" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Using index" aria-label="Anchor to: Using index" href="#using-index">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
-    </h4>
+    </h3>
 </div>
-<p>The tool is quite straightforward, designed mostly for 1:1 match between table and document.
-However, there are few tricks up it&rsquo;s sleeve.</p>
-<p>Features:</p>
-<ul>
-<li>Field renaming</li>
-<li>Field ignoring</li>
-<li>Table inlining (scripted 1:N)</li>
-<li>Table routing</li>
-<li>Join via join field. (static and polymorphic)</li>
-<li>Configurable document <code>_id</code></li>
-<li>(planned) template fields</li>
-<li>(planned) multi-column PKs</li>
-</ul>
-<p>Feel free to request additional features.</p>
-
+<p>Index must be unique, not partial, not deferrable, and include only columns marked NOT NULL.<br>
+Columns included via <code>... INCLUDE ( col1, col2</code>, would be ignored by REPLICA IDENTITY.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">example_uniq_idx</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">mytable</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">foo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">bar</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- ALL YOUR FIELDS SHOULD BE HERE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">)</span><span class="w"> </span><span class="n">INCLUDE</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">baz</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- THEESE FIELDS WOULD BE IGNORED
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">mytable</span><span class="w"> </span><span class="n">REPLICA</span><span class="w"> </span><span class="k">IDENTITY</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">example_uniq_idx</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div>
   </article>
 
 
